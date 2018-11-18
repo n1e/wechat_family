@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!link rel="bookmark"  type="image/x-icon"  href="/favicon.ico"/>
+    <!link rel="shortcut icon" href="/favicon.ico"/>
+
+    {% load staticfiles %}
+    <link rel="bookmark"  type="image/x-icon"  href="{% static "img/favicon.ico"%}"/>
+    <link rel="shortcut icon" href="{% static "img/favicon.ico"%}"/>
+
+
+</head>
+<body>
+ <meta charset="UTF-8">
+    <title>Log Page</title>
+
+    {% load staticfiles %}
+
+    <link rel="icon" type="image/x-icon" href="{% static "img/favicon.ico"%}"/>
+
+    <a>IP:{{ ip_add }}</a>
+    <a>DEBUG:{{ settings.DEBUG }}</a>
+
+    <li>{{ request.user }}</li>
+
+    <img src="{% static "img/favicon.ico"%}"/>
+
+
+
+    <a href={% url 'add_ext' 4 67%}>calc 4+5 结果</a>
+
+    {%  for i in Logs %}
+    <h2>{{ i.title }}</h2>
+    <p>{{ i.timestamp }}</p>
+    <p>{{ i.body }}</p>
+    {% endfor %}
+
+
+    <a>-------------------</a>
+    {% for num in Lists %}
+        <li>{{ num }}{% if not forloop.last %},{% endif %}</li>
+    {% empty %}<li>列表为空</li>
+    {% endfor %}
+
+
+    <h3>----------------------------------------</h3>
+
+ <script type="text/javascript">
+	function sub() {
+	    console.log('test_sub')
+		$("#formId").ajaxSubmit(function(message) {
+		});
+		return false;
+	}
+</script>
+    <form action="/upload/" method="post" enctype="multipart/form-data" onsubmit="return sub();">
+        {% csrf_token %}
+        <input type="file" name="img"/>
+        <input type="submit"  value="上传"/>
+    </form>
+
+
+</body>
+</html>
