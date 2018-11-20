@@ -1,7 +1,7 @@
 create database if not exists LR_DB Character set UTF8;
 use LR_DB;
 drop procedure if exists pro_add_user;
-DELIMITER$$
+DELIMITER $$
 create procedure pro_add_user()
 BEGIN
 declare icnt int default 0;
