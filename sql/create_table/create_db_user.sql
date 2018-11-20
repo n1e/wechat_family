@@ -12,6 +12,7 @@ end if;
 create user 'lr'@'%' identified by 'temp';
 grant all privileges on LR_DB.* to 'lr'@'%' with grant option;
 flush privileges;
-END$$
+END
+$$
 
 call pro_add_user;
